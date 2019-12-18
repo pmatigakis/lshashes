@@ -7,18 +7,18 @@ import com.matigakis.lshashes.streams.SlidingWindowSpliterator;
 import java.util.List;
 
 public class TlshCalculator {
-    public Tlsh calculate(List<Integer> data) {
+    public Tlsh calculate(Data data) {
         LookupTable lt = LookupTable.create();
         Pearson hash = new Pearson(lt);
+        List<Integer> dataContent = data.getData();
 
         TripletSelector tripletSelector = new TripletSelector();
         Mapping mapping = new Mapping(hash);
         Buckets buckets = new Buckets();
-        SlidingWindowSpliterator.windowed(data, 5)
+        SlidingWindowSpliterator.windowed(dataContent, 5)
                 .map(windowValues -> new Window(windowValues))
                 .map(window -> tripletSelector.select(window))
                 .flatMap(tripletList -> tripletList.stream())
-                .map(triplet -> triplet)
                 .map(triplet -> mapping.map(triplet))
                 .forEach(bucket -> buckets.incr(bucket));
 
@@ -26,7 +26,7 @@ public class TlshCalculator {
         Quartiles quartiles = quartilesCalculator.quartiles(buckets);
 
         HeaderCreator headerCreator = new HeaderCreator();
-        Header header = headerCreator.create(data, quartiles);
+        Header header = headerCreator.create(dataContent, quartiles);
 
         DigestCreator digestCreator = new DigestCreator();
         Digest digest = digestCreator.create(buckets, quartiles);

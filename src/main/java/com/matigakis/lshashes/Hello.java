@@ -17,6 +17,7 @@ import com.matigakis.lshashes.hashes.tlsh.Digest;
 import com.matigakis.lshashes.hashes.tlsh.DigestCreator;
 import com.matigakis.lshashes.hashes.tlsh.Tlsh;
 import com.matigakis.lshashes.hashes.tlsh.TlshCalculator;
+import com.matigakis.lshashes.hashes.tlsh.Text;
 import com.matigakis.lshashes.streams.SlidingWindowSpliterator;
 
 public class Hello {
@@ -26,12 +27,12 @@ public class Hello {
 //        LookupTable lt = LookupTable.create();
 //        Pearson hash = new Pearson(lt);
 
-        ArrayList<Integer> al = new ArrayList<>();
-        for (int i = 0; i < 500; i++) {
-            for (int o = 65; o < 90; o++) {
-                al.add(o);
-            }
-        }
+//        ArrayList<Integer> al = new ArrayList<>();
+//        for (int i = 0; i < 500; i++) {
+//            for (int o = 65; o < 90; o++) {
+//                al.add(o);
+//            }
+//        }
 
 //        TripletSelector tripletSelector = new TripletSelector();
 //        Mapping mapping = new Mapping(hash);
@@ -62,12 +63,14 @@ public class Hello {
 //        Digest digest = digestCreator.create(buckets, quartiles);
 //        System.out.println(digest.getDigest());
 
+//        Data data = new Data(al);
+        Text text = Text.create("hello dfsdafgasd asdgfasd askdjhlo askjdlask aldqal alkjsdaklo asjkgdiqud lakjdyhqiohoka aklsdiaqdi");
         TlshCalculator tlshCalaulator = new TlshCalculator();
-        Tlsh tlsh = tlshCalaulator.calculate(al);
+        Tlsh tlsh = tlshCalaulator.calculate(text);
         System.out.println(tlsh.toHex());
 
-        al.set(256, 70);
-        Tlsh tlsh2 = tlshCalaulator.calculate(al);
+        Text text2 = Text.create("hello dfsdafgasd asdgfasd askdjhlo askjdlask aldqal alkjsdaklo asjkgdiqud lakjdyhqiohoka aklsdiaqdc");
+        Tlsh tlsh2 = tlshCalaulator.calculate(text2);
 
         System.out.println(tlsh2.toHex());
     }
