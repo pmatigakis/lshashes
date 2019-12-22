@@ -2,7 +2,7 @@ package com.matigakis.lshashes.hashes.tlsh;
 
 public class Header {
     private int checksum;
-    private int lengthRepresentation;
+    private  int lengthRepresentation;
     private int q;
 
     public Header(int checksum, int lengthRepresentation, int q) {

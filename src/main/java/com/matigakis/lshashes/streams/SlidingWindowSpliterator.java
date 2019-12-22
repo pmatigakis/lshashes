@@ -61,7 +61,7 @@ public class SlidingWindowSpliterator<T> implements Spliterator<List<T>> {
 
     @Override
     public long estimateSize() {
-        if (source.size() < windowSize){
+        if (source.size() < windowSize) {
             return 0;
         }
 

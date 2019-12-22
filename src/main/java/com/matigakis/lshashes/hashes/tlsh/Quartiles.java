@@ -19,8 +19,7 @@ public class Quartiles {
         return q2;
     }
 
-    public int getQ3()
-    {
+    public int getQ3() {
         return q3;
     }
 }
