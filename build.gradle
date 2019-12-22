@@ -1,5 +1,15 @@
 plugins {
     id 'java'
+    id 'checkstyle'
+    id 'jacoco'
+}
+
+checkstyle {
+    toolVersion = "8.26"
+}
+
+jacoco {
+    toolVersion = "0.8.5"
 }
 
 group 'com.matigakis.lshashes'
