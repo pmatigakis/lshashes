@@ -1,8 +1,8 @@
 package com.matigakis.lshashes.hashes.tlsh;
 
-import java.util.ArrayList;
-
 import com.matigakis.lshashes.hashes.pearson.Pearson;
+
+import java.util.ArrayList;
 
 public class Mapping {
     private Pearson hash;

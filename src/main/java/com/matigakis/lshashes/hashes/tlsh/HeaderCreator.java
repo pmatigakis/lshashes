@@ -1,6 +1,5 @@
 package com.matigakis.lshashes.hashes.tlsh;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HeaderCreator {
@@ -11,14 +10,9 @@ public class HeaderCreator {
         int q1 = quartiles.getQ1();
         int q2 = quartiles.getQ2();
         int q3 = quartiles.getQ3();
-        int q1_ratio = (q1 * 100 / q3) % 16;
-        int q2_ratio = (q2 * 100 / q3) % 16;
-        int q = (q1_ratio << 4) | q2_ratio;
-
-        ArrayList<Integer> headerData = new ArrayList<>();
-        headerData.add(checksum);
-        headerData.add(lengthRepr);
-        headerData.add(q);
+        int q1Ratio = (q1 * 100 / q3) % 16;
+        int q2Ratio = (q2 * 100 / q3) % 16;
+        int q = (q1Ratio << 4) | q2Ratio;
 
         return new Header(checksum, lengthRepr, q);
     }

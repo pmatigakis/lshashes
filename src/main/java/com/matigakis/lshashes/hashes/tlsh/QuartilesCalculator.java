@@ -8,8 +8,8 @@ public class QuartilesCalculator {
         List<Integer> values = buckets.getValues();
         Collections.sort(values);
 
-        double per_item = (double) values.size() / 100.0;
-        int pos = (int)(per_item * (100 - pc));
+        double perItem = (double) values.size() / 100.0;
+        int pos = (int)(perItem * (100 - pc));
 
         return values.get(pos);
     }

@@ -17,7 +17,9 @@ public class TripletSelector {
         ArrayList<Triplet> triplets = new ArrayList<>();
 
         for (int[] tripletIndices: tripletIndexList) {
-            triplets.add(new Triplet(window.get(tripletIndices[0]), window.get(tripletIndices[1]), window.get(tripletIndices[2])));
+            triplets.add(new Triplet(window.get(tripletIndices[0]),
+                    window.get(tripletIndices[1]),
+                    window.get(tripletIndices[2])));
         }
 
         return triplets;

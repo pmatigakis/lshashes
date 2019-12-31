@@ -3,14 +3,18 @@ package com.matigakis.lshashes.hashes.pearson;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.IntStream;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LookupTable {
+    // TODO: this can be an array
     private List<Integer> table;
 
     public LookupTable(Random random) {
-        table = IntStream.range(0, 256).boxed().collect(Collectors.toList());
+        table = IntStream.range(0, 256)
+                .boxed()
+                .collect(Collectors.toList());
+
         Collections.shuffle(table, random);
     }
 

@@ -19,7 +19,8 @@ public class Digest {
         StringBuilder sb = new StringBuilder();
 
         for (Integer value: getDigest()) {
-            sb.append(String.format("%2s", Integer.toHexString(value)).replace(" ", "0"));
+            sb.append(String.format("%2s", Integer.toHexString(value))
+                    .replace(" ", "0"));
         }
 
         return sb.toString();

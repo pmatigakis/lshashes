@@ -1,14 +1,14 @@
 package com.matigakis.lshashes.streams;
 
-import java.util.ArrayList;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.function.Consumer;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import java.util.Spliterator;
 import java.util.Queue;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -26,8 +26,10 @@ public class SlidingWindowSpliterator<T> implements Spliterator<List<T>> {
         buffer = new ArrayDeque<T>(windowSize);
     }
 
-    public static <T> Stream<List<T>> windowed(Collection<T> stream, int windowSize) {
-        return StreamSupport.stream(new SlidingWindowSpliterator<>(stream, windowSize), false);
+    public static <T> Stream<List<T>> windowed(Collection<T> stream,
+                                               int windowSize) {
+        return StreamSupport.stream(
+                new SlidingWindowSpliterator<>(stream, windowSize), false);
     }
 
     @Override
