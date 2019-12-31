@@ -29,6 +29,10 @@ public class LookupTable {
     }
 
     public int get(int position) {
+        if (position < 0 | position >= 256) {
+            throw new IndexOutOfBoundsException();
+        }
+
         return table.get(position);
     }
 }
