@@ -1,5 +1,6 @@
 package com.matigakis.lshashes.hashes.tlsh;
 
+import com.matigakis.lshashes.exceptions.InvalidData;
 import com.matigakis.lshashes.hashes.pearson.LookupTable;
 import com.matigakis.lshashes.hashes.pearson.Pearson;
 import com.matigakis.lshashes.streams.SlidingWindowSpliterator;
@@ -24,6 +25,12 @@ public class TlshCalculator {
 
         QuartilesCalculator quartilesCalculator = new QuartilesCalculator();
         Quartiles quartiles = quartilesCalculator.quartiles(buckets);
+
+        if (quartiles.getQ3() == 0) {
+            throw new InvalidData("The hash of the input data " +
+                    "can't be calculated because it is either too short or " +
+                    "not complex enough");
+        }
 
         HeaderCreator headerCreator = new HeaderCreator();
         Header header = headerCreator.create(dataContent, quartiles);
