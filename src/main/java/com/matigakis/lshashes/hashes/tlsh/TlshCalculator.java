@@ -11,6 +11,29 @@ import java.util.List;
  * The TlshCalculator class calculates the tlsh hash of the given data.
  */
 public class TlshCalculator {
+    private Pearson pearson;
+
+    /**
+     * TlshCalculator constructor
+     *
+     * @param pearson the Pearson hash object to use
+     */
+    public TlshCalculator(Pearson pearson) {
+        this.pearson = pearson;
+    }
+
+    /**
+     * Create a new TlshCalculator object
+     *
+     * @return the TlshCalculator object
+     */
+    public static TlshCalculator create() {
+        LookupTable lt = LookupTable.create();
+        Pearson hash = new Pearson(lt);
+
+        return new TlshCalculator(hash);
+    }
+
     /**
      * Calculate the tlsh hash for the given data
      *
@@ -18,12 +41,10 @@ public class TlshCalculator {
      * @return the calculated hash
      */
     public Tlsh calculate(Data data) {
-        LookupTable lt = LookupTable.create();
-        Pearson hash = new Pearson(lt);
         List<Integer> dataContent = data.getData();
 
         TripletSelector tripletSelector = new TripletSelector();
-        Mapping mapping = new Mapping(hash);
+        Mapping mapping = new Mapping(this.pearson);
         Buckets buckets = new Buckets();
         SlidingWindowSpliterator.windowed(dataContent, 5)
                 .map(windowValues -> new Window(windowValues))

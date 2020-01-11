@@ -18,7 +18,7 @@ public class TlshCalculatorTest {
                 "semper ante, vel faucibus leo. Interdum et malesuada fames " +
                 "ac ante ipsum primis in faucibus");
 
-        TlshCalculator calculator = new TlshCalculator();
+        TlshCalculator calculator = TlshCalculator.create();
         Tlsh tlsh =  calculator.calculate(data);
 
         assertEquals("400522092b43249030c390362b94a6812388a1142907080f0032d02e0c28e8838480bc", tlsh.toHex());
@@ -28,7 +28,7 @@ public class TlshCalculatorTest {
     public void calculateWithEmptyString() {
         Data data = Text.create("");
 
-        TlshCalculator calculator = new TlshCalculator();
+        TlshCalculator calculator = TlshCalculator.create();
         Tlsh tlsh =  calculator.calculate(data);
     }
 
@@ -36,7 +36,7 @@ public class TlshCalculatorTest {
     public void calculateWithShortString() {
         Data data = Text.create("hello world");
 
-        TlshCalculator calculator = new TlshCalculator();
+        TlshCalculator calculator = TlshCalculator.create();
         Tlsh tlsh =  calculator.calculate(data);
     }
 }

@@ -65,7 +65,7 @@ public class Hello {
 
 //        Data data = new Data(al);
         Text text = Text.create("hello dfsdafgasd asdgfasd askdjhlo askjdlask aldqal alkjsdaklo asjkgdiqud lakjdyhqiohoka aklsdiaqdi");
-        TlshCalculator tlshCalaulator = new TlshCalculator();
+        TlshCalculator tlshCalaulator = TlshCalculator.create();
         Tlsh tlsh = tlshCalaulator.calculate(text);
         System.out.println(tlsh.toHex());
 
