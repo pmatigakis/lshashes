@@ -7,7 +7,16 @@ import com.matigakis.lshashes.streams.SlidingWindowSpliterator;
 
 import java.util.List;
 
+/**
+ * The TlshCalculator class calculates the tlsh hash of the given data.
+ */
 public class TlshCalculator {
+    /**
+     * Calculate the tlsh hash for the given data
+     *
+     * @param data the input data
+     * @return the calculated hash
+     */
     public Tlsh calculate(Data data) {
         LookupTable lt = LookupTable.create();
         Pearson hash = new Pearson(lt);
