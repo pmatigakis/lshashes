@@ -22,7 +22,7 @@ public class Hello {
                 "ac ante ipsum primis in faucibus");
 
         TlshCalculator calculator = TlshCalculator.create();
-        Tlsh tlsh =  calculator.calculate(data);
+        Tlsh tlsh = calculator.calculate(data);
 
         System.out.println(tlsh.toHex());
    }
