@@ -23,7 +23,7 @@ import com.matigakis.lshashes.hashes.tlsh.Text;
 import com.matigakis.lshashes.hashes.tlsh.Tlsh;
 import com.matigakis.lshashes.hashes.tlsh.TlshCalculator;
 
-public class Hello {
+public class TlshExample {
     public static void main(String[] args) {
         Data data = Text.create(
                 "Lorem ipsum dolor sit amet, consectetur " +
