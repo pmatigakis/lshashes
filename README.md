@@ -1,5 +1,5 @@
-The lshashes library provided implementation os several locally sensitive hashes.
-The following hash function are available.
+The lshashes library provides implementation os of several locally sensitive hashes.
+The following hash functions are available.
 
 * TLSH (https://documents.trendmicro.com/assets/wp/wp-locality-sensitive-hash.pdf)
 
