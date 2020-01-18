@@ -3,6 +3,16 @@ The following hash functions are available.
 
 * TLSH (https://documents.trendmicro.com/assets/wp/wp-locality-sensitive-hash.pdf)
 
+## Installation
+
+Build the library using gradle.
+
+```bash
+./gradlew jar
+```
+
+The jar file will be created at the `build/libs` directory.
+
 ## Examples
 
 ### TLSH
