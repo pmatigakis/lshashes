@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * A data container for text
+ * A data container for text.
  */
 public class Text extends Data {
     private Text(List<Integer> data) {
@@ -13,7 +13,7 @@ public class Text extends Data {
     }
 
     /**
-     * Create a new Text object
+     * Create a new Text object.
      *
      * @param text the text to use
      * @return the created Text object

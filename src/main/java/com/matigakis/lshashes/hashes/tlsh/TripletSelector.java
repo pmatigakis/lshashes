@@ -3,6 +3,9 @@ package com.matigakis.lshashes.hashes.tlsh;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Window triplet selector object.
+ */
 public class TripletSelector {
     private int[][] tripletIndexList = {
             {0, 1, 2},
@@ -13,6 +16,12 @@ public class TripletSelector {
             {0, 4, 4}
     };
 
+    /**
+     * Get the triplet that exist in the given window.
+     *
+     * @param window the data window
+     * @return a list with the window triplets
+     */
     public List<Triplet> select(Window window) {
         ArrayList<Triplet> triplets = new ArrayList<>();
 

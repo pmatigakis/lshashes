@@ -4,13 +4,13 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Container class for the data to use for the tlsh hash calculation
+ * Container class for the data to use for the tlsh hash calculation.
  */
 public class Data {
     private List<Integer> data;
 
     /**
-     * Create a new Data object
+     * Create a new Data object.
      *
      * @param data the contained data
      */
@@ -19,7 +19,7 @@ public class Data {
     }
 
     /**
-     * Get the contained data
+     * Get the contained data.
      *
      * @return the contained data
      */

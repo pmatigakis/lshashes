@@ -13,10 +13,10 @@ public class TlshCalculatorTest {
     @Test
     public void calculate() {
         Data data = Text.create(
-                "Lorem ipsum dolor sit amet, consectetur " +
-                "adipiscing elit. Sed congue pharetra cursus. Mauris eu " +
-                "semper ante, vel faucibus leo. Interdum et malesuada fames " +
-                "ac ante ipsum primis in faucibus");
+                "Lorem ipsum dolor sit amet, consectetur "
+                + "adipiscing elit. Sed congue pharetra cursus. Mauris eu "
+                + "semper ante, vel faucibus leo. Interdum et malesuada fames "
+                + "ac ante ipsum primis in faucibus");
 
         TlshCalculator calculator = TlshCalculator.create();
         Tlsh tlsh =  calculator.calculate(data);

@@ -3,6 +3,9 @@ package com.matigakis.lshashes.hashes.tlsh;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Quartile values calculator object.
+ */
 public class QuartilesCalculator {
     private int calculateQuantile(int pc, Buckets buckets) {
         List<Integer> values = buckets.getValues();
@@ -14,6 +17,12 @@ public class QuartilesCalculator {
         return values.get(pos);
     }
 
+    /**
+     * Calculate the quartiles of the given bucket.
+     *
+     * @param buckets the bucket for which to calculate the quartiles.
+     * @return the quartiles
+     */
     public Quartiles quartiles(Buckets buckets) {
         return new Quartiles(
                 calculateQuantile(75, buckets),

@@ -2,8 +2,8 @@ package com.matigakis.lshashes.tests.hashes.tlsh;
 
 import static org.junit.Assert.*;
 
-import com.matigakis.lshashes.hashes.pearson.Pearson;
 import com.matigakis.lshashes.hashes.pearson.LookupTable;
+import com.matigakis.lshashes.hashes.pearson.Pearson;
 import com.matigakis.lshashes.hashes.tlsh.Mapping;
 import com.matigakis.lshashes.hashes.tlsh.Triplet;
 import java.util.Random;

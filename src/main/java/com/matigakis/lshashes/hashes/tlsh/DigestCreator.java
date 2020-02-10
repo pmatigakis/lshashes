@@ -4,7 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * TLSH digest creator.
+ */
 public class DigestCreator {
+
+    /**
+     * Create a new DigestCreator object.
+     *
+     * @param buckets the buckets to use
+     * @param quartiles the digest quartiles
+     * @return the digest
+     */
     public Digest create(Buckets buckets, Quartiles quartiles) {
         int[] digest = new int[32];
 

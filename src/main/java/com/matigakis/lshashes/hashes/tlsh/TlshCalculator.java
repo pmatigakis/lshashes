@@ -5,8 +5,8 @@ import com.matigakis.lshashes.hashes.pearson.LookupTable;
 import com.matigakis.lshashes.hashes.pearson.Pearson;
 import com.matigakis.lshashes.streams.SlidingWindowSpliterator;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -16,7 +16,7 @@ public class TlshCalculator {
     private Pearson pearson;
 
     /**
-     * TlshCalculator constructor
+     * TlshCalculator constructor.
      *
      * @param pearson the Pearson hash object to use
      */
@@ -25,7 +25,7 @@ public class TlshCalculator {
     }
 
     /**
-     * Create a new TlshCalculator object
+     * Create a new TlshCalculator object.
      *
      * @return the TlshCalculator object
      */
@@ -37,7 +37,7 @@ public class TlshCalculator {
     }
 
     /**
-     * Calculate the tlsh hash for the given data
+     * Calculate the tlsh hash for the given data.
      *
      * @param data the input data
      * @return the calculated hash
@@ -47,15 +47,16 @@ public class TlshCalculator {
 
         TripletSelector tripletSelector = new TripletSelector();
         Mapping mapping = new Mapping(this.pearson);
-        List<Integer> bucket_values = SlidingWindowSpliterator.windowed(dataContent, 5)
-                .map(windowValues -> new Window(windowValues))
-                .map(window -> tripletSelector.select(window))
-                .flatMap(tripletList -> tripletList.stream())
-                .map(triplet -> mapping.map(triplet))
-                .collect(Collectors.toCollection(ArrayList<Integer>::new));
+        List<Integer> bucketValues =
+                SlidingWindowSpliterator.windowed(dataContent, 5)
+                    .map(windowValues -> new Window(windowValues))
+                    .map(window -> tripletSelector.select(window))
+                    .flatMap(tripletList -> tripletList.stream())
+                    .map(triplet -> mapping.map(triplet))
+                    .collect(Collectors.toCollection(ArrayList<Integer>::new));
 
         Buckets buckets = new Buckets();
-        for(Integer value: bucket_values) {
+        for (Integer value: bucketValues) {
             buckets.incr(value);
         }
 
@@ -63,9 +64,9 @@ public class TlshCalculator {
         Quartiles quartiles = quartilesCalculator.quartiles(buckets);
 
         if (quartiles.getQ3() == 0) {
-            throw new InvalidData("The hash of the input data " +
-                    "can't be calculated because it is either too short or " +
-                    "not complex enough");
+            throw new InvalidData("The hash of the input data "
+                    + "can't be calculated because it is either too short or "
+                    + "not complex enough");
         }
 
         HeaderCreator headerCreator = new HeaderCreator();
