@@ -6,6 +6,8 @@ import com.matigakis.lshashes.hashes.pearson.Pearson;
 import com.matigakis.lshashes.streams.SlidingWindowSpliterator;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * The TlshCalculator class calculates the tlsh hash of the given data.
@@ -45,13 +47,17 @@ public class TlshCalculator {
 
         TripletSelector tripletSelector = new TripletSelector();
         Mapping mapping = new Mapping(this.pearson);
-        Buckets buckets = new Buckets();
-        SlidingWindowSpliterator.windowed(dataContent, 5)
+        List<Integer> bucket_values = SlidingWindowSpliterator.windowed(dataContent, 5)
                 .map(windowValues -> new Window(windowValues))
                 .map(window -> tripletSelector.select(window))
                 .flatMap(tripletList -> tripletList.stream())
                 .map(triplet -> mapping.map(triplet))
-                .forEach(bucket -> buckets.incr(bucket));
+                .collect(Collectors.toCollection(ArrayList<Integer>::new));
+
+        Buckets buckets = new Buckets();
+        for(Integer value: bucket_values) {
+            buckets.incr(value);
+        }
 
         QuartilesCalculator quartilesCalculator = new QuartilesCalculator();
         Quartiles quartiles = quartilesCalculator.quartiles(buckets);
